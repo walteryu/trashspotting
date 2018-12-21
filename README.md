@@ -1,20 +1,19 @@
-# Roadway Litter Image Dataset - Google Street View
+# Trashspotting - Reducing Public Litter with Data Science
 
-## Training Dataset for Machine Learning
+## Image Recognition Model with Object Detection
+
+### Problem Statement
+
+Public litter has large environmental, sustinability and livability impcts in many U.S. communities. As a result, this project seeks to help address the issue with data science.
 
 ### Introduction
 
-Image dataset for training ML models.
+Image recognition project using Google [TensorFlow](https://www.tensorflow.org/), [Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) and [Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection). This notebook is based on the example provided by this [tutorial](https://link.medium.com/uTgS5pRCPS) on Medium.
 
-### Software and Tools
+### Image Analysis
 
-Software used for this project are as follows:
+This project implements an image recognition model with object detection using TensorFlow. It includes the necessary Jupyter notebooks, Python files and datasets to deploy the model.
 
-Google Earth and KML Data Layers
+### Installation
 
-## Installation
-
-Clone Github repository, then run locally as follows:
-
-* GIS Data Layers - Open Shapefiles with QGIS (open-source)
-* Google Earth and KML Data Layers - Open with Google Earth Desktop
+Clone Github repository, then run locally or with Colaboratory. Local installation will require TensorFlow and all dependencies.
