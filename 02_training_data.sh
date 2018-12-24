@@ -80,6 +80,7 @@ os.environ['PYTHONPATH'] += ':/content/models/research/:/content/models/research
 # !echo "item {\n id: 1\n name: 'trash'\n}" > label_map.pbtxt
 # !echo ''
 # !echo '===> /content/models/research/object_detection/data/trashspotting'
+!rm -rf ./trashspotting
 !git clone https://github.com/walteryu/trashspotting.git
 # !echo ''
 !echo '===> cd /content/models/research/object_detection/data/trashspotting'
@@ -92,148 +93,149 @@ os.environ['PYTHONPATH'] += ':/content/models/research/:/content/models/research
 # label_map.pbtxt path:
 # /content/models/research/object_detection/data/trashspotting/label_map.pbtxt
 
-# !echo '===> import google drive packages'
-# import os
-# from zipfile import ZipFile
-# from shutil import copy
-# from pydrive.auth import GoogleAuth
-# from pydrive.drive import GoogleDrive
-# from google.colab import auth
-# from oauth2client.client import GoogleCredentials
-# auth.authenticate_user()
-# gauth = GoogleAuth()
-# gauth.credentials = GoogleCredentials.get_application_default()
-# drive = GoogleDrive(gauth)
+!echo '===> import google drive packages'
+import os
+from zipfile import ZipFile
+from shutil import copy
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+from google.colab import auth
+from oauth2client.client import GoogleCredentials
+auth.authenticate_user()
+gauth = GoogleAuth()
+gauth.credentials = GoogleCredentials.get_application_default()
+drive = GoogleDrive(gauth)
+!echo ''
+
+!echo '===> cd /content/models/research/object_detection/data'
+%cd /content/models/research/object_detection/data
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data'
+!ls -al /content/models/research/object_detection/data
+!echo ''
+
+!echo '===> /content/models/research/object_detection/data/trash_dataset'
+# Cop fileId from google drive shareable link
+fileId = '1LF7ZP_DbfyMMFOnKhGDnAtpIMAwu4C7C'
+fileName = fileId + '.zip'
+downloaded = drive.CreateFile({'id': fileId})
+downloaded.GetContentFile(fileName)
+ds = ZipFile(fileName)
+ds.extractall()
+os.remove(fileName)
+print('Extracted zip file ' + fileName)
+!echo '===> ls /content/models/research/object_detection/data'
+!ls -al /content/models/research/object_detection/data
+!echo ''
+
+!echo '===> cd /content/models/research/object_detection/data/trash_dataset'
+%cd /content/models/research/object_detection/data/trash_dataset
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset'
+!ls -al /content/models/research/object_detection/data/trash_dataset
+!echo ''
+
+!echo '===> /content/models/research/object_detection/data/trash_dataset/annotations/trainval.txt'
+image_files=os.listdir('./images')
+im_files=[x.split('.')[0] for x in image_files]
+with open('./annotations/trainval.txt', 'w') as text_file:
+  for row in im_files:
+    text_file.write(row + '\n')
+!echo ''
+
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset/annotations'
+!ls -al /content/models/research/object_detection/data/trash_dataset/annotations
+!echo ''
+!echo '===> cd /content/models/research/object_detection/data/trash_dataset/annotations'
+%cd /content/models/research/object_detection/data/trash_dataset/annotations
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset/annotations'
+!ls -al /content/models/research/object_detection/data/trash_dataset/annotations
+!echo ''
+
+!echo '/content/models/research/object_detection/data/trash_dataset/annotations/trimaps/xxxxx.png'
+!mkdir trimaps
+from PIL import Image
+image = Image.new('RGB', (640, 480))
+for filename in os.listdir('./'):
+  filename = os.path.splitext(filename)[0]
+  image.save('trimaps/' + filename + '.png')
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset/annotations/trimaps'
+!ls -al /content/models/research/object_detection/data/trash_dataset/annotations/trimaps
+!echo ''
+
+!echo '===> cd /content/models/research/object_detection/data'
+%cd /content/models/research/object_detection/data
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data'
+!ls -al /content/models/research/object_detection/data
+!echo ''
+
+# Looking for create_pet_tf_record file since colab hides it...
+# !echo '===> grep -nr tf_record'
+# !grep -nr 'tf_record'
 # !echo ''
-#
-# !echo '===> cd /content/models/research/object_detection/data'
-# %cd /content/models/research/object_detection/data
+# !echo '===> grep -nr pet_tf_record'
+# !grep -nr 'pet_tf_record'
 # !echo ''
-# !echo '===> ls /content/models/research/object_detection/data'
-# !ls -al /content/models/research/object_detection/data
+# !echo '===> grep -nr create_pet_tf_record'
+# !grep -nr 'create_pet_tf_record'
 # !echo ''
-#
-# !echo '===> /content/models/research/object_detection/data/trash_dataset'
-# # Cop fileId from google drive shareable link
-# fileId = '1LF7ZP_DbfyMMFOnKhGDnAtpIMAwu4C7C'
-# fileName = fileId + '.zip'
-# downloaded = drive.CreateFile({'id': fileId})
-# downloaded.GetContentFile(fileName)
-# ds = ZipFile(fileName)
-# ds.extractall()
-# os.remove(fileName)
-# print('Extracted zip file ' + fileName)
-# !echo '===> ls /content/models/research/object_detection/data'
-# !ls -al /content/models/research/object_detection/data
-# !echo ''
-#
-# !echo '===> cd /content/models/research/object_detection/data/trash_dataset'
-# %cd /content/models/research/object_detection/data/trash_dataset
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset'
-# !ls -al /content/models/research/object_detection/data/trash_dataset
-# !echo ''
-#
-# !echo '===> /content/models/research/object_detection/data/trash_dataset/annotations/trainval.txt'
-# image_files=os.listdir('./images')
-# im_files=[x.split('.')[0] for x in image_files]
-# with open('./annotations/trainval.txt', 'w') as text_file:
-#   for row in im_files:
-#     text_file.write(row + '\n')
-# !echo ''
-#
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset/annotations'
-# !ls -al /content/models/research/object_detection/data/trash_dataset/annotations
-# !echo ''
-# !echo '===> cd /content/models/research/object_detection/data/trash_dataset/annotations'
-# %cd /content/models/research/object_detection/data/trash_dataset/annotations
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset/annotations'
-# !ls -al /content/models/research/object_detection/data/trash_dataset/annotations
-# !echo ''
-#
-# !echo '/content/models/research/object_detection/data/trash_dataset/annotations/trimaps/xxxxx.png'
-# !mkdir trimaps
-# from PIL import Image
-# image = Image.new('RGB', (640, 480))
-# for filename in os.listdir('./'):
-#   filename = os.path.splitext(filename)[0]
-#   image.save('trimaps/' + filename + '.png')
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset/annotations/trimaps'
-# !ls -al /content/models/research/object_detection/data/trash_dataset/annotations/trimaps
-# !echo ''
-#
-# !echo '===> cd /content/models/research/object_detection/data'
-# %cd /content/models/research/object_detection/data
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data'
-# !ls -al /content/models/research/object_detection/data
-# !echo ''
-#
-# # Looking for create_pet_tf_record file since colab hides it...
-# # !echo '===> grep -nr tf_record'
-# # !grep -nr 'tf_record'
-# # !echo ''
-# # !echo '===> grep -nr pet_tf_record'
-# # !grep -nr 'pet_tf_record'
-# # !echo ''
-# # !echo '===> grep -nr create_pet_tf_record'
-# # !grep -nr 'create_pet_tf_record'
-# # !echo ''
-#
-# # Manage all directories closely by absolute path from root:
-# # !echo '===> Current dir:'
-# # !pwd
-# # !echo ''
-# # !echo '===> ls /content/models'
-# # %cd /content/models
-# # !echo ''
-# # !echo '===> ls /content/models'
-# # !ls -al /content/models
-# # !echo ''
-# # !echo '===> cd /content/models/research'
-# # %cd /content/models/research
-# # !echo ''
-# # !echo '===> ls /content/models/research'
-# # !ls -al /content/models/research
-# # !echo ''
-# # !echo '===> cd /content/models/research/object_detection'
-# # %cd /content/models/research/object_detection
-# # !echo ''
-# # !echo '===> ls /content/models/research/object_detection'
-# # !ls -al /content/models/research/object_detection
-# # !echo ''
-#
-# # Change into dataset_tools dir to run create_pet_tf_record.py due to file path length:
-# !echo '===> cd /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
-# %cd /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
-# !ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !echo ''
-# !echo 'pwd'
+
+# Manage all directories closely by absolute path from root:
+# !echo '===> Current dir:'
 # !pwd
 # !echo ''
-# !echo 'ls ./'
-# !ls -al ./
+# !echo '===> ls /content/models'
+# %cd /content/models
 # !echo ''
-#
-# # create_pet_tf_record file path:
-# # /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/create_pet_tf_record.py'
-#
-# !echo '/content/models/research/object_detection/data/tf_train.record'
-# !echo '/content/models/research/object_detection/data/tf_val.record'
-# !python create_pet_tf_record.py --label_map_path=/content/models/research/object_detection/data/label_map.pbtxt --data_dir=. --output_dir=. --num_shards=1
-# !mv pet_faces_train.record-00000-of-00001 tf_train.record
-# !mv pet_faces_val.record-00000-of-00001 tf_val.record
+# !echo '===> ls /content/models'
+# !ls -al /content/models
 # !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
-# !ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+# !echo '===> cd /content/models/research'
+# %cd /content/models/research
 # !echo ''
-# !echo 'pwd'
-# !pwd
+# !echo '===> ls /content/models/research'
+# !ls -al /content/models/research
 # !echo ''
-# !echo 'ls ./'
-# !ls -al ./
+# !echo '===> cd /content/models/research/object_detection'
+# %cd /content/models/research/object_detection
 # !echo ''
+# !echo '===> ls /content/models/research/object_detection'
+# !ls -al /content/models/research/object_detection
+# !echo ''
+
+# Change into dataset_tools dir to run create_pet_tf_record.py due to file path length:
+!echo '===> cd /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
+%cd /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
+!ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo ''
+!echo 'pwd'
+!pwd
+!echo ''
+!echo 'ls ./'
+!ls -al ./
+!echo ''
+
+# create_pet_tf_record file path:
+# /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/create_pet_tf_record.py'
+
+!echo '/content/models/research/object_detection/data/tf_train.record'
+!echo '/content/models/research/object_detection/data/tf_val.record'
+# /content/models/research/object_detection/data/trashspotting/label_map.pbtxt
+!python create_pet_tf_record.py --label_map_path=/content/models/research/object_detection/data/trashspotting/label_map.pbtxt --data_dir=. --output_dir=. --num_shards=1
+!mv pet_faces_train.record-00000-of-00001 tf_train.record
+!mv pet_faces_val.record-00000-of-00001 tf_val.record
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
+!ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo ''
+!echo 'pwd'
+!pwd
+!echo ''
+!echo 'ls ./'
+!ls -al ./
+!echo ''
