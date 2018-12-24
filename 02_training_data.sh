@@ -116,7 +116,7 @@ drive = GoogleDrive(gauth)
 
 !echo '===> /content/models/research/object_detection/data/trash_dataset'
 # Cop fileId from google drive shareable link
-fileId = '1LF7ZP_DbfyMMFOnKhGDnAtpIMAwu4C7C'
+fileId = '1bPb7FTQ1yap_PgtzF5b_OuzVPWsIFLH4'
 fileName = fileId + '.zip'
 downloaded = drive.CreateFile({'id': fileId})
 downloaded.GetContentFile(fileName)
@@ -135,7 +135,27 @@ print('Extracted zip file ' + fileName)
 !ls -al /content/models/research/object_detection/data/trash_dataset
 !echo ''
 
-!echo '===> /content/models/research/object_detection/data/trash_dataset/annotations/trainval.txt'
+# !echo '===> /content/models/research/object_detection/data/trash_dataset/annotations/trainval.txt'
+!echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
+!cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset
+!echo ''
+!echo '===> cp /content/models/research/object_detection/data/trashspotting/images'
+!cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset'
+!ls -al /content/models/research/object_detection/data/trash_dataset
+!echo ''
+# create_tf_record file path: ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo '===> cp /content/models/research/object_detection/data/trashspotting/images'
+!cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo ''
+!echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
+!cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo ''
+!echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools'
+!ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo ''
+!echo '>>>>>>>>>>>>>>>>>>>>>>>>>> CHECKPOINT'
 image_files=os.listdir('./images')
 im_files=[x.split('.')[0] for x in image_files]
 with open('./annotations/trainval.txt', 'w') as text_file:
