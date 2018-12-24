@@ -1,5 +1,6 @@
 .DS_Store
 .ipynb_checkpoints/
 
+git_rm.sh
 check_repo.sh
 training_images/
