@@ -135,30 +135,22 @@ print('Extracted zip file ' + fileName)
 !ls -al /content/models/research/object_detection/data/trash_dataset
 !echo ''
 
-# !echo '===> /content/models/research/object_detection/data/trash_dataset/annotations/trainval.txt'
+# !echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
+# !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/dataset_tools
+# !echo ''
+!echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations/xmls'
+!mkdir /content/models/research/object_detection/data/trashspotting/annotations/xmls
+!cp -rf /content/models/research/object_detection/data/trashspotting/annotations/*.xml /content/models/research/object_detection/data/trashspotting/annotations/xmls
+!echo ''
 !echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
-# !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset
 !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/dataset_tools
 !echo ''
 !echo '===> cp /content/models/research/object_detection/data/trashspotting/images'
-# !cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset
 !cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/dataset_tools
 !echo ''
 !echo '===> ls /content/models/research/object_detection/'
 !ls -al /content/models/research/object_detection
 !echo ''
-# create_tf_record file path: ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !echo '===> cp /content/models/research/object_detection/data/trashspotting/images'
-# !cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !echo ''
-# !echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
-# !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools'
-# !ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-# !echo ''
 
 image_files=os.listdir('./images')
 im_files=[x.split('.')[0] for x in image_files]
@@ -197,34 +189,11 @@ for filename in os.listdir('./'):
 !echo ''
 
 # Looking for create_pet_tf_record file since colab hides it...
-!echo '===> cd /content'
-%cd /content
-!echo ''
-!echo '===> grep -nr create_pet_tf_record'
-!grep -nr 'create_pet_tf_record'
-!echo ''
-
-# Manage all directories closely by absolute path from root:
-# !echo '===> Current dir:'
-# !pwd
+# !echo '===> cd /content'
+# %cd /content
 # !echo ''
-# !echo '===> ls /content/models'
-# %cd /content/models
-# !echo ''
-# !echo '===> ls /content/models'
-# !ls -al /content/models
-# !echo ''
-# !echo '===> cd /content/models/research'
-# %cd /content/models/research
-# !echo ''
-# !echo '===> ls /content/models/research'
-# !ls -al /content/models/research
-# !echo ''
-# !echo '===> cd /content/models/research/object_detection'
-# %cd /content/models/research/object_detection
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection'
-# !ls -al /content/models/research/object_detection
+# !echo '===> grep -nr create_pet_tf_record'
+# !grep -nr 'create_pet_tf_record'
 # !echo ''
 
 # # Change into dataset_tools dir to run create_pet_tf_record.py due to file path length:
@@ -241,6 +210,12 @@ for filename in os.listdir('./'):
 !echo 'ls ./'
 !ls -al ./
 !echo ''
+
+!echo 'cp /content/models/research/object_detection/data/trashspotting/label_map.pbtxt'
+!mkdir /content/datalab
+!cp /content/models/research/object_detection/data/trashspotting/label_map.pbtxt /content/datalab
+!echo 'ls /content/datalab'
+!ls -al /content/datalab
 
 !echo '/content/models/research/object_detection/data/tf_train.record'
 !echo '/content/models/research/object_detection/data/tf_val.record'
@@ -259,43 +234,56 @@ for filename in os.listdir('./'):
 !ls -al ./
 !echo ''
 
-# !echo '===> cd /content/models/research/object_detection/data'
-# %cd /content/models/research/object_detection/data
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data'
-# !ls -al /content/models/research/object_detection/data
-# !echo ''
+# !echo '===> Import rnn model'
+# import os
+# import shutil
+# import glob
+# import urllib
+# # Reference to debug urllib error:
+# # https://stackoverflow.com/questions/39975367/attributeerror-module-urllib-has-no-attribute-urlopen/39975383
+# import urllib.request
+# import tarfile
 #
-# # !echo '===> Import modules (rnn model)'
-# # import os
-# # import shutil
-# # import glob
-# # import urllib
-# # # Reference to debug urllib error:
-# # # https://stackoverflow.com/questions/39975367/attributeerror-module-urllib-has-no-attribute-urlopen/39975383
-# # import urllib.request
-# # import tarfile
-# # !echo ''
-# #
-# # !echo '===> Set vars (rnn model)'
-# # MODEL = 'faster_rcnn_inception_v2_coco_2018_01_28'
-# # MODEL_FILE = MODEL + '.tar.gz'
-# # DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
-# # DEST_DIR = 'pretrained_model'
-# # !echo ''
-# #
-# # !echo '===> Download model (rnn model)'
-# # if not (os.path.exists(MODEL_FILE)):
-# #   # opener = urllib.URLopener()
-# #   opener = urllib.request.urlopen()
-# #   opener.retrieve(DOWNLOAD_BASE + MODEL_FILE, MODEL_FILE)
-# #
-# # tar = tarfile.open(MODEL_FILE)
-# # tar.extractall()
-# # tar.close()
-# #
-# # os.remove(MODEL_FILE)
-# # if (os.path.exists(DEST_DIR)):
-# #   shutil.rmtree(DEST_DIR)
-# # os.rename(MODEL, DEST_DIR)
-# # !echo ''
+# MODEL = 'faster_rcnn_inception_v2_coco_2018_01_28'
+# MODEL_FILE = MODEL + '.tar.gz'
+# DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
+# DEST_DIR = 'pretrained_model'
+#
+# if not (os.path.exists(MODEL_FILE)):
+#   # opener = urllib.URLopener()
+#   opener = urllib.request.urlopen()
+#   opener.retrieve(DOWNLOAD_BASE + MODEL_FILE, MODEL_FILE)
+#
+# tar = tarfile.open(MODEL_FILE)
+# tar.extractall()
+# tar.close()
+#
+# os.remove(MODEL_FILE)
+# if (os.path.exists(DEST_DIR)):
+#   shutil.rmtree(DEST_DIR)
+# os.rename(MODEL, DEST_DIR)
+
+# Edit model config file
+# !echo '/content/models/research/object_detection/data/tf_val.record'
+!echo '===> Edit model config file'
+import re
+filename = '/content/models/research/object_detection/samples/configs/faster_rcnn_inception_v2_pets.config'
+with open(filename) as f:
+  s = f.read()
+with open(filename, 'w') as f:
+  s = re.sub('PATH_TO_BE_CONFIGURED/model.ckpt', '/content/models/research/object_detection/data/pretrained_model/model.ckpt', s)
+  s = re.sub('PATH_TO_BE_CONFIGURED/pet_faces_train.record-\?\?\?\?\?-of-00010', '/content/models/research/object_detection/data/tf_train.record', s)
+  s = re.sub('PATH_TO_BE_CONFIGURED/pet_faces_val.record-\?\?\?\?\?-of-00010', '/content/models/research/object_detection/data/tf_val.record', s)
+  s = re.sub('PATH_TO_BE_CONFIGURED/pet_label_map.pbtxt', '/content/models/research/object_detection/data/label_map.pbtxt', s)
+  f.write(s)
+!echo ''
+
+!echo '===> Train RNN model'
+# /content/models/research/object_detection/data
+!python /content/models/research/object_detection/model_main.py \
+    --pipeline_config_path=/content/models/research/object_detection/samples/configs/faster_rcnn_inception_v2_pets.config \
+    --model_dir=/content/models/research/object_detection/data/trained \
+    --alsologtostderr \
+    --num_train_steps=3000 \
+    --num_eval_steps=500
+!echo ''
