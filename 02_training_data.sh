@@ -137,25 +137,29 @@ print('Extracted zip file ' + fileName)
 
 # !echo '===> /content/models/research/object_detection/data/trash_dataset/annotations/trainval.txt'
 !echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
-!cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset
+# !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset
+!cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/dataset_tools
 !echo ''
 !echo '===> cp /content/models/research/object_detection/data/trashspotting/images'
-!cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset
+# !cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset
+!cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/dataset_tools
 !echo ''
-!echo '===> ls /content/models/research/object_detection/data/trash_dataset'
-!ls -al /content/models/research/object_detection/data/trash_dataset
+!echo '===> ls /content/models/research/object_detection/'
+!ls -al /content/models/research/object_detection
 !echo ''
 # create_tf_record file path: ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-!echo '===> cp /content/models/research/object_detection/data/trashspotting/images'
-!cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-!echo ''
-!echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
-!cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-!echo ''
-!echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools'
-!ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
-!echo ''
-!echo '>>>>>>>>>>>>>>>>>>>>>>>>>> CHECKPOINT'
+# !echo '===> cp /content/models/research/object_detection/data/trashspotting/images'
+# !cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+# !cp -rf /content/models/research/object_detection/data/trashspotting/images /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+# !echo ''
+# !echo '===> cp /content/models/research/object_detection/data/trashspotting/annotations'
+# !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+# !cp -rf /content/models/research/object_detection/data/trashspotting/annotations /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+# !echo ''
+# !echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools'
+# !ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+# !echo ''
+
 image_files=os.listdir('./images')
 im_files=[x.split('.')[0] for x in image_files]
 with open('./annotations/trainval.txt', 'w') as text_file:
@@ -193,15 +197,12 @@ for filename in os.listdir('./'):
 !echo ''
 
 # Looking for create_pet_tf_record file since colab hides it...
-# !echo '===> grep -nr tf_record'
-# !grep -nr 'tf_record'
-# !echo ''
-# !echo '===> grep -nr pet_tf_record'
-# !grep -nr 'pet_tf_record'
-# !echo ''
-# !echo '===> grep -nr create_pet_tf_record'
-# !grep -nr 'create_pet_tf_record'
-# !echo ''
+!echo '===> cd /content'
+%cd /content
+!echo ''
+!echo '===> grep -nr create_pet_tf_record'
+!grep -nr 'create_pet_tf_record'
+!echo ''
 
 # Manage all directories closely by absolute path from root:
 # !echo '===> Current dir:'
@@ -226,12 +227,13 @@ for filename in os.listdir('./'):
 # !ls -al /content/models/research/object_detection
 # !echo ''
 
-# Change into dataset_tools dir to run create_pet_tf_record.py due to file path length:
-!echo '===> cd /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
-%cd /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+# # Change into dataset_tools dir to run create_pet_tf_record.py due to file path length:
+# Correct path: models/research/object_detection/dataset_tools
+!echo '===> cd /content/models/research/object_detection/dataset_tools/'
+%cd /content/models/research/object_detection/dataset_tools
 !echo ''
-!echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
-!ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo '===> ls /content/models/research/object_detection/dataset_tools/'
+!ls -al /content/models/research/object_detection/dataset_tools
 !echo ''
 !echo 'pwd'
 !pwd
@@ -239,9 +241,6 @@ for filename in os.listdir('./'):
 !echo 'ls ./'
 !ls -al ./
 !echo ''
-
-# create_pet_tf_record file path:
-# /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/create_pet_tf_record.py'
 
 !echo '/content/models/research/object_detection/data/tf_train.record'
 !echo '/content/models/research/object_detection/data/tf_val.record'
@@ -250,8 +249,8 @@ for filename in os.listdir('./'):
 !mv pet_faces_train.record-00000-of-00001 tf_train.record
 !mv pet_faces_val.record-00000-of-00001 tf_val.record
 !echo ''
-!echo '===> ls /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools/'
-!ls -al /content/models/research/object_detection/data/trash_dataset/models/research/object_detection/dataset_tools
+!echo '===> ls /content/models/research/object_detection/dataset_tools/'
+!ls -al /content/models/research/object_detection/dataset_tools
 !echo ''
 !echo 'pwd'
 !pwd
@@ -259,3 +258,44 @@ for filename in os.listdir('./'):
 !echo 'ls ./'
 !ls -al ./
 !echo ''
+
+# !echo '===> cd /content/models/research/object_detection/data'
+# %cd /content/models/research/object_detection/data
+# !echo ''
+# !echo '===> ls /content/models/research/object_detection/data'
+# !ls -al /content/models/research/object_detection/data
+# !echo ''
+#
+# # !echo '===> Import modules (rnn model)'
+# # import os
+# # import shutil
+# # import glob
+# # import urllib
+# # # Reference to debug urllib error:
+# # # https://stackoverflow.com/questions/39975367/attributeerror-module-urllib-has-no-attribute-urlopen/39975383
+# # import urllib.request
+# # import tarfile
+# # !echo ''
+# #
+# # !echo '===> Set vars (rnn model)'
+# # MODEL = 'faster_rcnn_inception_v2_coco_2018_01_28'
+# # MODEL_FILE = MODEL + '.tar.gz'
+# # DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
+# # DEST_DIR = 'pretrained_model'
+# # !echo ''
+# #
+# # !echo '===> Download model (rnn model)'
+# # if not (os.path.exists(MODEL_FILE)):
+# #   # opener = urllib.URLopener()
+# #   opener = urllib.request.urlopen()
+# #   opener.retrieve(DOWNLOAD_BASE + MODEL_FILE, MODEL_FILE)
+# #
+# # tar = tarfile.open(MODEL_FILE)
+# # tar.extractall()
+# # tar.close()
+# #
+# # os.remove(MODEL_FILE)
+# # if (os.path.exists(DEST_DIR)):
+# #   shutil.rmtree(DEST_DIR)
+# # os.rename(MODEL, DEST_DIR)
+# # !echo ''
