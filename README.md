@@ -1,4 +1,4 @@
-# Trashspotting - Code Evaluation for Custom Object Detection Model
+# Trashspotting - Trained Model Evaluation
 
 ## Collection of Tutorials and References to Evaluate Image Recognition Models
 
