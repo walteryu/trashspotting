@@ -1,74 +1,74 @@
 # 04A - KAB Litter Detection Algorithm
 # Reference: https://github.com/isaychris/litter-detection-tensorflow
 
-# # Clone tensorflow/model repo into /content dir:
-# !echo '===> clone models into /content (same as starting dir):'
-# !git clone --quiet https://github.com/tensorflow/models.git
-# !echo ''
-# !echo '===> install packages into system dir'
-# !apt-get install -qq protobuf-compiler python-tk
-# !pip install -q Cython contextlib2 pillow lxml matplotlib PyDrive
-# !pip install -q pycocotools
-# !echo ''
-#
-# # Manage all directories closely by absolute path from root:
-# !echo '===> Current dir:'
-# !pwd
-# !echo ''
-# !echo '===> Current dir contents:'
-# !ls -al ./
-# !echo ''
-# !echo '===> ls /content/models'
-# %cd /content/models
-# !echo ''
-# !echo '===> ls /content/models'
-# !ls -al /content/models
-# !echo ''
-# !echo '===> cd /content/models/research'
-# %cd /content/models/research
-# !echo ''
-# !echo '===> ls /content/models/research'
-# !ls -al /content/models/research
-# !echo ''
-#
-# # Config protoc, slim and builder script:
-# !protoc object_detection/protos/*.proto --python_out=.
-# import os
-# os.environ['PYTHONPATH'] += ':/content/models/research/:/content/models/research/slim/'
-# !python object_detection/builders/model_builder_test.py
-#
-# import numpy as np
-# import os
-# import six.moves.urllib as urllib
-# import sys
-# import tarfile
-# import tensorflow as tf
-# import zipfile
-# import math
-# import time
-#
-# from collections import defaultdict
-# from io import StringIO
-# from matplotlib import pyplot as plt
-# from PIL import Image
-#
-# # This is needed since the notebook is stored in the object_detection folder.
-# # sys.path.append("..")
-# sys.path.append('..')
-# from object_detection.utils import ops as utils_ops
-#
-# # Upgrade GTF
-# !pip install tensorflow --upgrade
-#
-# # if tf.__version__ < '1.4.0':
-# #   raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
-#
-# # This is needed to display the images.
-# %matplotlib inline
-#
-# # Here are the imports from the object detection module.
-# from object_detection.utils import label_map_util
-# from object_detection.utils import visualization_utils as vis_util
+# Clone tensorflow/model repo into /content dir:
+!echo '===> clone models into /content (same as starting dir):'
+!git clone --quiet https://github.com/tensorflow/models.git
+!echo ''
+!echo '===> install packages into system dir'
+!apt-get install -qq protobuf-compiler python-tk
+!pip install -q Cython contextlib2 pillow lxml matplotlib PyDrive
+!pip install -q pycocotools
+!echo ''
+
+# Manage all directories closely by absolute path from root:
+!echo '===> Current dir:'
+!pwd
+!echo ''
+!echo '===> Current dir contents:'
+!ls -al ./
+!echo ''
+!echo '===> ls /content/models'
+%cd /content/models
+!echo ''
+!echo '===> ls /content/models'
+!ls -al /content/models
+!echo ''
+!echo '===> cd /content/models/research'
+%cd /content/models/research
+!echo ''
+!echo '===> ls /content/models/research'
+!ls -al /content/models/research
+!echo ''
+
+# Config protoc, slim and builder script:
+!protoc object_detection/protos/*.proto --python_out=.
+import os
+os.environ['PYTHONPATH'] += ':/content/models/research/:/content/models/research/slim/'
+!python object_detection/builders/model_builder_test.py
+
+import numpy as np
+import os
+import six.moves.urllib as urllib
+import sys
+import tarfile
+import tensorflow as tf
+import zipfile
+import math
+import time
+
+from collections import defaultdict
+from io import StringIO
+from matplotlib import pyplot as plt
+from PIL import Image
+
+# This is needed since the notebook is stored in the object_detection folder.
+# sys.path.append("..")
+sys.path.append('..')
+from object_detection.utils import ops as utils_ops
+
+# Upgrade GTF
+!pip install tensorflow --upgrade
+
+# if tf.__version__ < '1.4.0':
+#   raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
+
+# This is needed to display the images.
+%matplotlib inline
+
+# Here are the imports from the object detection module.
+from object_detection.utils import label_map_util
+from object_detection.utils import visualization_utils as vis_util
 
 # Clone repo into object_detection dir
 PATH_TO_OBJECT_DET = '/content/models/research/object_detection'
@@ -79,17 +79,17 @@ PATH_TO_OBJECT_DET = '/content/models/research/object_detection'
 !ls -al $PATH_TO_OBJECT_DET
 !echo ''
 
-# # Reference: https://github.com/isaychris/litter-detection-tensorflow
-# !echo 'git clone litter-detection-tensorflow'
-# # !rm -rf ./litter-detection-tensorflow
-# !git clone https://github.com/isaychris/litter-detection-tensorflow.git
-# !echo ''
+# Reference: https://github.com/isaychris/litter-detection-tensorflow
+!echo 'git clone litter-detection-tensorflow'
+# !rm -rf ./litter-detection-tensorflow
+!git clone https://github.com/isaychris/litter-detection-tensorflow.git
+!echo ''
 
 !echo 'git clone trashspotting'
 !rm -rf ./trashspotting
 !git clone https://github.com/walteryu/trashspotting.git
 !echo ''
-PATH_TO_TRASHSPOTTING = '/content/models/research/object_detection'
+PATH_TO_TRASHSPOTTING = '/content/models/research/object_detection/trashspotting'
 !echo '===> cd $PATH_TO_TRASHSPOTTING'
 %cd $PATH_TO_TRASHSPOTTING
 !echo ''
@@ -114,6 +114,7 @@ MODEL_NAME = 'litter_inference_graph'
 # PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_CKPT = '/content/models/research/object_detection/litter-detection-tensorflow/litter_inference_graph/frozen_inference_graph.pb'
 PATH_TO_MODEL = '/content/models/research/object_detection/litter-detection-tensorflow/litter_inference_graph/saved_model'
+PATH_TO_GRAPH = '/content/models/research/object_detection/litter-detection-tensorflow/litter_inference_graph'
 
 # List of the strings that is used to add correct label for each box.
 # PATH_TO_LABELS = os.path.join('kab_training', 'litter_detection_map.pbtxt')
@@ -157,6 +158,11 @@ config.gpu_options.per_process_gpu_memory_fraction = 1
 # !ls -al /content/models/research/object_detection/litter-detection-tensorflow/litter_inference_graph
 # !echo ''
 
+!echo '===> cd $PATH_TO_TRASHSPOTTING'
+%cd $PATH_TO_TRASHSPOTTING
+!echo ''
+!python freeze_graph.py --model_dir=$PATH_TO_GRAPH --output_node_name='litter'
+
 # # Load a (frozen) Tensorflow model into memory.
 # detection_graph = tf.Graph()
 # with detection_graph.as_default():
@@ -183,8 +189,3 @@ config.gpu_options.per_process_gpu_memory_fraction = 1
 #   return graph
 #   # graph = openGraph()
 # openGraph()
-
-!echo '===> cd $PATH_TO_TRASHSPOTTING'
-%cd $PATH_TO_TRASHSPOTTING
-!echo ''
-!python freeze_graph.py --$PATH_TO_MODEL
