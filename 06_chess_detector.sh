@@ -1,5 +1,6 @@
 # 06 - Chess Detection Algorithm (Colab Notebook)
 # Reference: https://github.com/wagonhelm/TF_ObjectDetection_API
+# Article: https://www.oreilly.com/ideas/object-detection-with-tensorflow
 
 # Clone tensorflow/model repo into colab root dir, /content:
 !git clone --quiet https://github.com/tensorflow/models.git
