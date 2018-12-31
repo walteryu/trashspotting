@@ -1,4 +1,4 @@
-# Trashspotting - Image Recognition Framework Evaluation and Implementation
+# Trashspotting - Image Recognition Framework Evaluation
 
 ## Collection of Tutorials to Evaluate Image Recognition Models
 
