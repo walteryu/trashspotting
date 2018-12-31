@@ -1,5 +1,6 @@
 # 08 - Racoon Dataset (Colab Notebook)
 # Reference: https://github.com/datitran/raccoon_dataset
+# Article: https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9
 
 # Clone tensorflow/model repo into colab root dir, /content:
 !git clone --quiet https://github.com/tensorflow/models.git
