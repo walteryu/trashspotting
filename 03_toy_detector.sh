@@ -1,4 +1,5 @@
 # 03 - Toy detector model based on references below:
+# Reference: https://github.com/walteryu/Deep-Learning/tree/master/tensorflow_toy_detector
 
 # Clone tensorflow/model repo into /content dir:
 !echo '===> clone models into /content (same as starting dir):'
@@ -10,150 +11,103 @@
 !pip install -q pycocotools
 !echo ''
 
-# Manage all directories closely by absolute path from root:
-!echo '===> Current dir:'
-!pwd
-!echo ''
-!echo '===> Current dir contents:'
-!ls -al ./
-!echo ''
-
-# Manage all directories closely by absolute path from root:
-!echo '===> Current dir:'
-!pwd
-!echo ''
-!echo '===> ls /content/models'
-%cd /content/models
-!echo ''
-!echo '===> ls /content/models'
-!ls -al /content/models
-!echo ''
-!echo '===> cd /content/models/research'
-%cd /content/models/research
-!echo ''
-!echo '===> ls /content/models/research'
-!ls -al /content/models/research
-!echo ''
-
 # Config protoc, slim and builder script:
+%cd /content/models/research
 !protoc object_detection/protos/*.proto --python_out=.
 import os
 os.environ['PYTHONPATH'] += ':/content/models/research/:/content/models/research/slim/'
 !python object_detection/builders/model_builder_test.py
 
-!echo '===> cd /content/models/research/object_detection'
-%cd /content/models/research/object_detection
-!echo ''
-!echo '===> ls /content/models/research/object_detection'
-!ls -al /content/models/research/object_detection
-!echo ''
-!echo '===> cd /content/models/research/object_detection/data'
-%cd /content/models/research/object_detection/data
-!echo ''
-!echo '===> ls /content/models/research/object_detection/data'
-!ls -al /content/models/research/object_detection/data
-!echo ''
+# Import modules (TF_ObjectDetection_API):
+import numpy as np
+import os
+import six.moves.urllib as urllib
+import sys
+import tarfile
+import tensorflow as tf
+import zipfile
+import math
+import time
+from collections import defaultdict
+from io import StringIO
+from matplotlib import pyplot as plt
+from PIL import Image
 
-# !echo '===> /content/models/research/object_detection/data/trashspotting'
-# !rm -rf ./trashspotting
-# !git clone https://github.com/walteryu/trashspotting.git
-# # !echo ''
-# !echo '===> cd /content/models/research/object_detection/data/trashspotting'
-# %cd /content/models/research/object_detection/data/trashspotting
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trashspotting'
-# !ls -al /content/models/research/object_detection/data/trashspotting
-# !echo ''
+# Import modules (chess detection):
+import skimage
+import numpy as np
+from skimage import io, transform
+import shutil
+import glob
+import pandas as pd
+import xml.etree.ElementTree as ET
+import urllib.request
+import urllib.error
+
+# This is needed since the notebook is stored in the object_detection folder.
+sys.path.append('..')
+from object_detection.utils import ops as utils_ops
+
+# Upgrade GTF
+!pip install tensorflow --upgrade
+
+# This is needed to display the images.
+%matplotlib inline
+
+# Here are the imports from the object detection module.
+from object_detection.utils import label_map_util
+from object_detection.utils import visualization_utils as vis_util
+
+# Set paths
+PATH_TO_API = '/content/models/research/object_detection'
+PATH_TO_REPO = '/content/models/research/object_detection/Deep-Learning/tensorflow_toy_detector'
+PATH_TO_DATA = '/content/models/research/object_detection/Deep-Learning/tensorflow_toy_detector/data'
+PATH_TO_LABELS = '/content/models/research/object_detection/Deep-Learning/tensorflow_toy_detector/annotations'
+
+!echo '===> cd $PATH_TO_API'
+%cd $PATH_TO_API
+!echo ''
+!echo '===> ls PATH_TO_API'
+!ls -al $PATH_TO_API
+!echo ''
 
 # Reference: https://towardsdatascience.com/building-a-toy-detector-with-tensorflow-object-detection-api-63c0fdf2ac95
-!rm -rf ./toy-detector
-!git clone https://github.com/walteryu/toy-detector.git
+!rm -rf ./Deep-Learning
+!git clone https://github.com/walteryu/Deep-Learning.git
 
 # !echo '===> /content/models/research/object_detection/data/label_map.pbtxt'
 # !echo "item {\n id: 1\n name: 'trash'\n}" > label_map.pbtxt
 # !echo ''
 
-# Copy files to correct locations for create_pet_tf_record
-!echo '===> cd /content/models/research/object_detection/data/toy-detector'
-%cd /content/models/research/object_detection/data/toy-detector
+# >>>>> START HERE >>>>>
+!echo '===> cd $PATH_TO_REPO'
+%cd $PATH_TO_REPO
 !echo ''
-!echo '===> ls /content/models/research/object_detection/data/toy-detector'
-!ls -al /content/models/research/object_detection/data/toy-detector
-!echo ''
-!echo '===> /content/models/research/object_detection/data/toy-detector/annotations/trainval.txt'
-!ls images | grep ".jpg" | sed s/.jpg// > ./annotations/trainval.txt
-!echo ''
-!echo '===> ls /content/models/research/object_detection/data/toy-detector/annotations'
-!ls -al /content/models/research/object_detection/data/toy-detector/annotations
-!echo ''
-!echo '===> cp /content/models/research/object_detection/data/toy-detector/annotations/xmls'
-!mkdir /content/models/research/object_detection/data/toy-detector/annotations/xmls
-!cp -rf /content/models/research/object_detection/data/toy-detector/annotations/*.xml \
-  /content/models/research/object_detection/data/toy-detector/annotations/xmls
+!echo '===> ls $PATH_TO_REPO'
+!ls -al $PATH_TO_REPO
 !echo ''
 
-!echo '===> ls /content/models/research/object_detection/data/toy-detector/images'
-!ls -al /content/models/research/object_detection/data/toy-detector/images
+# Create TF record
+# !echo '===> xml_to_csv.py'
+# !python xml_to_csv.py
+# !echo ''
+!echo '===> generate_tfrecord.py'
+!python generate_tfrecord.py
+!mv test.record data/
+!mv train.record data/
 !echo ''
 
-# !./toy-detector/create_pet_tf_record --data_dir=./toy-detector/images --output_dir=/toy-detector
-# !python /content/models/research/object_detection/data/toy-detector/create_pet_tf_record.py \
-#   --label_map_path=/content/models/research/object_detection/data/toy-detector/toy_label_map.pbtxt \
-#   --data_dir=. --output_dir=. --num_shards=1
-!python /content/models/research/object_detection/data/toy-detector/create_pet_tf_record.py \
-  --label_map_path=/content/models/research/object_detection/data/toy-detector/toy_label_map.pbtxt \
-  --data_dir=/content/models/research/object_detection/data/ \
-  --output_dir=/content/models/research/object_detection/data/toy-detector \
-  --include_masks=True
+# Download model
+!wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz
+!tar xvzf ssd_mobilenet_v1_coco_11_06_2017.tar.gz
 
-# !echo '===> cd /content/models/research/object_detection/data/toy-detector'
-# %cd /content/models/research/object_detection/data/toy-detector
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/toy-detector'
-# !ls -al /content/models/research/object_detection/data/toy-detector
-# !echo ''
+!echo '===> cd $PATH_TO_REPO'
+%cd $PATH_TO_REPO
+!echo ''
+!echo '===> ls $PATH_TO_REPO'
+!ls -al $PATH_TO_REPO
+!echo ''
 
-# label_map.pbtxt path:
-# /content/models/research/object_detection/data/trashspotting/label_map.pbtxt
-
-# !echo '===> import google drive packages'
-# import os
-# from zipfile import ZipFile
-# from shutil import copy
-# from pydrive.auth import GoogleAuth
-# from pydrive.drive import GoogleDrive
-# from google.colab import auth
-# from oauth2client.client import GoogleCredentials
-# auth.authenticate_user()
-# gauth = GoogleAuth()
-# gauth.credentials = GoogleCredentials.get_application_default()
-# drive = GoogleDrive(gauth)
-# !echo ''
-#
-# !echo '===> cd /content/models/research/object_detection/data'
-# %cd /content/models/research/object_detection/data
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data'
-# !ls -al /content/models/research/object_detection/data
-# !echo ''
-#
-# !echo '===> /content/models/research/object_detection/data/trash_dataset'
-# # Cop fileId from google drive shareable link
-# fileId = '1bPb7FTQ1yap_PgtzF5b_OuzVPWsIFLH4'
-# fileName = fileId + '.zip'
-# downloaded = drive.CreateFile({'id': fileId})
-# downloaded.GetContentFile(fileName)
-# ds = ZipFile(fileName)
-# ds.extractall()
-# os.remove(fileName)
-# print('Extracted zip file ' + fileName)
-# !echo '===> ls /content/models/research/object_detection/data'
-# !ls -al /content/models/research/object_detection/data
-# !echo ''
-#
-# !echo '===> cd /content/models/research/object_detection/data/trash_dataset'
-# %cd /content/models/research/object_detection/data/trash_dataset
-# !echo ''
-# !echo '===> ls /content/models/research/object_detection/data/trash_dataset'
-# !ls -al /content/models/research/object_detection/data/trash_dataset
-# !echo ''
+# Train model
+!python /content/models/research/object_detection/legacy/train.py --logtostderr \
+  --train_dir=data/ --pipeline_config_path=data/ssd_mobilenet_v1_pets.config

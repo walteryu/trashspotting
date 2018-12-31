@@ -11,24 +11,17 @@
 !pip install -q pycocotools
 !echo ''
 
-# Manage all directories closely by absolute path from root:
-!echo '===> Current dir:'
-!pwd
-!echo ''
-!echo '===> Current dir contents:'
-!ls -al ./
-!echo ''
-!echo '===> ls /content/models'
-%cd /content/models
-!echo ''
-!echo '===> ls /content/models'
-!ls -al /content/models
-!echo ''
-!echo '===> cd /content/models/research'
-%cd /content/models/research
-!echo ''
-!echo '===> ls /content/models/research'
-!ls -al /content/models/research
+# Set paths
+PATH_TO_RE = '/content/models/research'
+PATH_TO_API = '/content/models/research/object_detection'
+PATH_TO_UTILS = '/content/models/research/object_detection/utils'
+PATH_TO_REPO = '/content/models/research/object_detection/TF_ObjectDetection_API'
+PATH_TO_DATA = '/content/models/research/object_detection/TF_ObjectDetection_API/data'
+PATH_TO_LABELS = '/content/models/research/object_detection/TF_ObjectDetection_API/labels'
+PATH_TO_TS = '/content/models/research/object_detection/trashspotting'
+
+!echo '===> cd $PATH_TO_RE'
+%cd $PATH_TO_RE
 !echo ''
 
 # Config protoc, slim and builder script:
@@ -70,12 +63,8 @@ from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 
 # Clone repo into object_detection dir
-PATH_TO_OBJECT_DET = '/content/models/research/object_detection'
-!echo '===> cd $PATH_TO_OBJECT_DET'
-%cd $PATH_TO_OBJECT_DET
-!echo ''
-!echo '===> ls $PATH_TO_OBJECT_DET'
-!ls -al $PATH_TO_OBJECT_DET
+!echo '===> cd $PATH_TO_API'
+%cd $PATH_TO_API
 !echo ''
 
 # Reference: https://github.com/isaychris/litter-detection-tensorflow
