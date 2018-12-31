@@ -93,4 +93,14 @@ detector.loadModel()
 detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path , "trash1.jpg"), output_image_path=os.path.join(execution_path , "trash1_ai.jpg"))
 
 for eachObject in detections:
-    print(eachObject["name"] , " : " , eachObject["percentage_probability"] )
+  print(eachObject["name"] , " : " , eachObject["percentage_probability"] )
+
+!pwd
+!echo ''
+!ls -al ./
+!echo ''
+!echo 'reached EOF...'
+!echo ''
+
+# from google.colab import files
+# files.download('./trash1_ai.jpg')
