@@ -1,5 +1,6 @@
 # # 07 - Chess Detection Algorithm (Rocker Notebook)
 # # Reference: https://github.com/wagonhelm/TF_ObjectDetection_API
+# # Article: https://www.oreilly.com/ideas/object-detection-with-tensorflow
 #
 # # Install apt package manager:
 # !apt update -y && apt upgrade -y
