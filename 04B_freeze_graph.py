@@ -1,3 +1,6 @@
+# 04A - KAB Litter Detection Algorithm (Troubleshoot Parse Error)
+# Reference: https://github.com/isaychris/litter-detection-tensorflow
+
 # Reference: https://blog.metaflow.fr/tensorflow-how-to-freeze-a-model-and-serve-it-with-a-python-api-d4f3596b3adc
 import os, argparse
 import tensorflow as tf
