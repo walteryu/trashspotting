@@ -77,15 +77,14 @@ from object_detection.utils import visualization_utils as vis_util
 !rm -rf ./trashspotting
 !git clone https://github.com/walteryu/trashspotting.git
 !echo ''
-PATH_TO_TRASHSPOTTING = '/content/models/research/object_detection/trashspotting'
-!echo '===> cd $PATH_TO_TRASHSPOTTING'
-%cd $PATH_TO_TRASHSPOTTING
+!echo '===> cd $PATH_TO_TS'
+%cd $PATH_TO_TS
 !echo ''
-!echo '===> ls $PATH_TO_TRASHSPOTTING'
-!ls -al $PATH_TO_TRASHSPOTTING
+!echo '===> ls $PATH_TO_TS'
+!ls -al $PATH_TO_TS
 !echo ''
 
-# >>>>> START HERE FOR AFTER LOADING MODULES >>>>>
+# >>>>> START HERE >>>>>
 # What model to use
 MODEL_NAME = 'litter_inference_graph'
 
@@ -221,7 +220,7 @@ config.gpu_options.per_process_gpu_memory_fraction = 1
 # python train.py --logtostderr --train_dir=training \
 #   --pipeline_config_path=training/ssd_mobilenet_v1_pets.config
 
-# # >>>>> END HERE FOR AFTER LOADING MODULES >>>>>
+# # >>>>> END HERE >>>>>
 #
 # # Change dir to run model
 # PATH_TO_REPO = '/content/models/research/object_detection/litter-detection-tensorflow'
