@@ -1,5 +1,6 @@
 # 02 - Customized model based on references below:
 # Reference: https://github.com/RomRoc/objdet_train_tensorflow_colab
+# Article: https://hackernoon.com/object-detection-in-google-colab-with-custom-dataset-5a7bb2b0e97e
 # Instructions: Always base dir on root path and run entire script
 
 # Manage all directories closely by absolute path from root:
