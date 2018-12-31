@@ -1,5 +1,6 @@
 # 09 - MF Detector (Colab Notebook)
 # Reference: https://github.com/bourdakos1/Custom-Object-Detection
+# Tutorial: https://medium.freecodecamp.org/tracking-the-millenium-falcon-with-tensorflow-c8c86419225e
 
 # Clone tensorflow/model repo into colab root dir, /content:
 !git clone --quiet https://github.com/tensorflow/models.git
