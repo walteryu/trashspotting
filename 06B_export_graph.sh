@@ -1,5 +1,6 @@
 # 06B - Chess Detection Algorithm (Export Graph)
 # Reference: https://github.com/wagonhelm/TF_ObjectDetection_API
+# Article: https://www.oreilly.com/ideas/object-detection-with-tensorflow
 
 # # Copy object detection utilities to root directory
 # PATH_TO_UTILS = '/content/models/research/object_detection/utils'
