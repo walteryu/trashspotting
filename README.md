@@ -1,30 +1,40 @@
-# Trashspotting - Trained Model Evaluation
+# Trashspotting - Image Recognition Framework Evaluation and Implementation
 
-## Collection of Tutorials and References to Evaluate Image Recognition Models
+## Collection of Tutorials to Evaluate Image Recognition Models
 
 ### Purpose
 
-Evaluate image recognition models to develop custom model for litter detection in California.
+Evaluate image recognition models to develop custom model for litter detection in California. Public litter has large environmental, sustainability and livability impacts in California. As a result, this project seeks to help address the issue with deep learning.
 
-### Problem Statement
+### Implementation (In Progress)
 
-Public litter has large environmental, sustainability and livability impacts in California. As a result, this project seeks to help address the issue with data science.
+Project implementation uses the technologies listed below and includes the necessary files and datasets to deploy the model:
 
-### Introduction
+1. [Google TensorFlow](https://www.tensorflow.org/)
+2. [Google Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb)
+3. [TensorFlow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection)
+4. [Docker - TensorFlow Image](https://hub.docker.com/r/tensorflow/tensorflow/)
+5. [Jupyter Notebook](https://jupyter.readthedocs.io/en/latest/install.html)
 
-Image recognition project using Google [TensorFlow](https://www.tensorflow.org/), [Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) and [Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection).
+Each module is intended to run in this [Colaboratory notebook](https://colab.research.google.com/drive/1gy4IcA6Kmasez6TXu1NM6fR3YWdKKr1f), so clone the notebook to you Google Drive account and paste desired module to run it.
 
-Each major tutorial is organized into its own notebook module and cited accordingly.
+Each major tutorial is organized into its own notebook module and cited accordingly; also included are annotated Google Street View images with CA highway litter for model training/testing.
 
-### Image Analysis
+### Best Practices
 
-This project seeks to implement a custom image recognition model with object detection using TensorFlow. It includes the necessary Jupyter notebooks, Python files and datasets to deploy the model.
+TensorFlow requires a good amount of setup and configuration, so the tools listed below are recommended to make it more approachable and easier to build models:
+
+1. [Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) - Free Jupyter Notebook environment from Google specialized for TensorFlow; specifically, Google provides free GPU-enabled notebooks!
+2. [Docker](https://hub.docker.com/r/tensorflow/tensorflow/) - TensorFlow loads up in Jupyter Notebook; saves time in local installation of all modules and dependencies.
+3. [Keras](https://medium.com/nybles/create-your-first-image-recognition-classifier-using-cnn-keras-and-tensorflow-backend-6eaab98d14dd) - Example tutorial demonstrating image recognition with Keras and TensorFlow.
+4. [Jupyter Notebook](https://medium.com/@margaretmz/anaconda-jupyter-notebook-tensorflow-and-keras-b91f381405f8) - Example tutorial demonstrating notebook setup with Keras and TensorFlow.
+5. [Anaconda](https://medium.com/codingthesmartway-com-blog/getting-started-with-jupyter-notebook-for-python-4e7082bd5d46) - Example tutorial shows how to install Jupyter Notebook with the Anaconda package manager.
 
 ### Installation
 
-Clone Github repository, then run locally or with Google Colaboratory. Local installation will require TensorFlow and all dependencies.
+Clone Github repository, then run locally or with Google Colaboratory. Local installation will require TensorFlow and all dependencies; as a result, Colaboratory or Docker image are highly recommended.
 
-### Citations - Tutorials and Code Repositories
+### Citations - Tutorials and Code Repositories (In Progress)
 
 Module 2: [Custom Model in Colab - Medium Article](https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9)
 
