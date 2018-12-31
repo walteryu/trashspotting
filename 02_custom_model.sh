@@ -32,29 +32,20 @@
 !pip install -q pycocotools
 !echo ''
 
-# Manage all directories closely by absolute path from root:
-!echo '===> Current dir:'
-!pwd
-!echo ''
-!echo '===> Current dir contents:'
-!ls -al ./
-!echo ''
+# Set paths
+PATH_TO_RE = '/content/models/research'
+PATH_TO_API = '/content/models/research/object_detection'
+PATH_TO_DATA = '/content/models/research/object_detection/data'
+PATH_TO_TS = '/content/models/research/object_detection/data/trashspotting'
 
-# Manage all directories closely by absolute path from root:
-!echo '===> Current dir:'
-!pwd
-!echo ''
-!echo '===> ls /content/models'
-%cd /content/models
-!echo ''
-!echo '===> ls /content/models'
-!ls -al /content/models
-!echo ''
-!echo '===> cd /content/models/research'
-%cd /content/models/research
-!echo ''
-!echo '===> ls /content/models/research'
-!ls -al /content/models/research
+# !echo '===> cd /content/models/research'
+# %cd /content/models/research
+# !echo ''
+# !echo '===> ls /content/models/research'
+# !ls -al /content/models/research
+# !echo ''
+!echo '===> cd $PATH_TO_RE'
+%cd $PATH_TO_RE
 !echo ''
 
 # Config protoc, slim and builder script:
@@ -63,17 +54,14 @@ import os
 os.environ['PYTHONPATH'] += ':/content/models/research/:/content/models/research/slim/'
 !python object_detection/builders/model_builder_test.py
 
-!echo '===> cd /content/models/research/object_detection'
-%cd /content/models/research/object_detection
-!echo ''
-!echo '===> ls /content/models/research/object_detection'
-!ls -al /content/models/research/object_detection
-!echo ''
-!echo '===> cd /content/models/research/object_detection/data'
-%cd /content/models/research/object_detection/data
-!echo ''
-!echo '===> ls /content/models/research/object_detection/data'
-!ls -al /content/models/research/object_detection/data
+# !echo '===> cd /content/models/research/object_detection/data'
+# %cd /content/models/research/object_detection/data
+# !echo ''
+# !echo '===> ls /content/models/research/object_detection/data'
+# !ls -al /content/models/research/object_detection/data
+# !echo ''
+!echo '===> cd $PATH_TO_DATA'
+%cd $PATH_TO_DATA
 !echo ''
 
 # !echo '===> /content/models/research/object_detection/data/label_map.pbtxt'
@@ -82,16 +70,16 @@ os.environ['PYTHONPATH'] += ':/content/models/research/:/content/models/research
 # !echo '===> /content/models/research/object_detection/data/trashspotting'
 !rm -rf ./trashspotting
 !git clone https://github.com/walteryu/trashspotting.git
-# !echo ''
-!echo '===> cd /content/models/research/object_detection/data/trashspotting'
-%cd /content/models/research/object_detection/data/trashspotting
-!echo ''
-!echo '===> ls /content/models/research/object_detection/data/trashspotting'
-!ls -al /content/models/research/object_detection/data/trashspotting
-!echo ''
 
-# label_map.pbtxt path:
-# /content/models/research/object_detection/data/trashspotting/label_map.pbtxt
+# !echo '===> cd /content/models/research/object_detection/data/trashspotting'
+# %cd /content/models/research/object_detection/data/trashspotting
+# !echo ''
+# !echo '===> ls /content/models/research/object_detection/data/trashspotting'
+# !ls -al /content/models/research/object_detection/data/trashspotting
+# !echo ''
+!echo '===> cd $PATH_TO_TS'
+%cd $PATH_TO_TS
+!echo ''
 
 !echo '===> import google drive packages'
 import os
@@ -107,11 +95,14 @@ gauth.credentials = GoogleCredentials.get_application_default()
 drive = GoogleDrive(gauth)
 !echo ''
 
-!echo '===> cd /content/models/research/object_detection/data'
-%cd /content/models/research/object_detection/data
-!echo ''
-!echo '===> ls /content/models/research/object_detection/data'
-!ls -al /content/models/research/object_detection/data
+# !echo '===> cd /content/models/research/object_detection/data'
+# %cd /content/models/research/object_detection/data
+# !echo ''
+# !echo '===> ls /content/models/research/object_detection/data'
+# !ls -al /content/models/research/object_detection/data
+# !echo ''
+!echo '===> cd $PATH_TO_DATA'
+%cd $PATH_TO_DATA
 !echo ''
 
 !echo '===> /content/models/research/object_detection/data/trash_dataset'
