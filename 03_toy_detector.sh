@@ -1,5 +1,6 @@
 # 03 - Toy detector model based on references below:
 # Reference: https://github.com/walteryu/Deep-Learning/tree/master/tensorflow_toy_detector
+# Article: https://towardsdatascience.com/building-a-toy-detector-with-tensorflow-object-detection-api-63c0fdf2ac95
 
 # Clone tensorflow/model repo into /content dir:
 !echo '===> clone models into /content (same as starting dir):'
