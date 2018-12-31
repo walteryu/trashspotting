@@ -4,11 +4,11 @@
 
 ### Problem Statement
 
-Public litter has large environmental, sustinability and livability impcts in many U.S. communities. As a result, this project seeks to help address the issue with data science.
+Public litter has large environmental, sustainability and livability impacts in many U.S. communities. As a result, this project seeks to help address the issue with data science.
 
 ### Introduction
 
-Image recognition project using Google [TensorFlow](https://www.tensorflow.org/), [Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) and [Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection). This notebook is based on the example provided by this [tutorial](https://link.medium.com/uTgS5pRCPS) on Medium.
+Image recognition project using Google [TensorFlow](https://www.tensorflow.org/), [Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) and [Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection). This notebook is based on tutorials listed in the citations section of this notebook.
 
 ### Image Analysis
 
