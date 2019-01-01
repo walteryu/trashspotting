@@ -45,6 +45,10 @@
 # # Root directory of the project
 # ROOT_DIR = os.getcwd()
 #
+# # Clone repo
+# !git clone https://github.com/walteryu/trashspotting.git
+# TRASH_DIR = os.path.join(ROOT_DIR, "trashspotting", "cnn_images")
+#
 # # Directory to save logs and trained model
 # MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 #
@@ -74,7 +78,7 @@
 # model = modellib.MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=config)
 #
 # # Load weights trained on MS-COCO
-# model.load_weights(COCO_MODEL_PATH, by_name=True)
+model.load_weights(COCO_MODEL_PATH, by_name=True)
 
 # >>>>> START >>>>>
 # Run object detection
@@ -108,45 +112,21 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 
 # Load a random image from the images folder
 # Photo: http://www.dot.ca.gov/dist11/trash/pics.html
-!wget http://www.dot.ca.gov/dist11/trash/2016/DSCN3217.jpg -P ./images
-file_names = next(os.walk(IMAGE_DIR))[2]
-image = skimage.io.imread(os.path.join(IMAGE_DIR, 'DSCN3217.jpg'))
-results = model.detect([image], verbose=1)
-r = results[0]
-visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
+# !wget http://www.dot.ca.gov/dist11/trash/2016/DSCN3217.jpg -P ./images
+# image = skimage.io.imread(os.path.join(IMAGE_DIR, 'DSCN3217.jpg'))
 
-# Load images from the images folder
-# Photo: http://www.dot.ca.gov/dist11/trash/pics.html
-!wget http://www.dot.ca.gov/dist11/trash/2016/escondido-travelway2.jpg -P ./images
-file_names = next(os.walk(IMAGE_DIR))[2]
-image = skimage.io.imread(os.path.join(IMAGE_DIR, 'escondido-travelway2.jpg'))
-results = model.detect([image], verbose=1)
-r = results[0]
-visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
+for i in range(1,7):
+  file_names = next(os.walk(TRASH_DIR))[2]
+  # image = skimage.io.imread(os.path.join(TRASH_DIR, random.choice(file_names)))
+  image = skimage.io.imread(os.path.join(TRASH_DIR, 'clean' + str(i) + '.jpg'))
+  results = model.detect([image], verbose=1)
+  r = results[0]
+  visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
 
-# Load images from the images folder
-# Photo: http://www.dot.ca.gov/dist11/trash/pics.html
-!wget http://www.dot.ca.gov/dist11/trash/2016/Picture7.jpg -P ./images
-file_names = next(os.walk(IMAGE_DIR))[2]
-image = skimage.io.imread(os.path.join(IMAGE_DIR, 'Picture7.jpg'))
-results = model.detect([image], verbose=1)
-r = results[0]
-visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
-
-# Load images from the images folder
-# Photo: http://www.dot.ca.gov/dist11/trash/pics.html
-!wget http://www.dot.ca.gov/dist11/trash/2016/IMG_2950.JPG -P ./images
-file_names = next(os.walk(IMAGE_DIR))[2]
-image = skimage.io.imread(os.path.join(IMAGE_DIR, 'IMG_2950.JPG'))
-results = model.detect([image], verbose=1)
-r = results[0]
-visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
-
-# Load images from the images folder
-# Photo: http://www.dot.ca.gov/dist11/trash/pics.html
-!wget http://www.dot.ca.gov/dist11/trash/2016/Picture1.jpg -P ./images
-file_names = next(os.walk(IMAGE_DIR))[2]
-image = skimage.io.imread(os.path.join(IMAGE_DIR, 'Picture1.jpg'))
-results = model.detect([image], verbose=1)
-r = results[0]
-visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
+for i in range(1,10):
+  file_names = next(os.walk(TRASH_DIR))[2]
+  # image = skimage.io.imread(os.path.join(TRASH_DIR, random.choice(file_names)))
+  image = skimage.io.imread(os.path.join(TRASH_DIR, 'trash' + str(i) + '.jpg'))
+  results = model.detect([image], verbose=1)
+  r = results[0]
+  visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
