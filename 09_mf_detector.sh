@@ -5,6 +5,8 @@
 
 # Clone tensorflow/model repo into colab root dir, /content:
 # !git clone --quiet https://github.com/tensorflow/models.git
+!rm -rf ./models
+!mkdir models
 %cd /content/models
 # !git clone https://github.com/bourdakos1/Custom-Object-Detection.git
 !rm -rf ./Custom-Object-Detection
