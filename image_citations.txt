@@ -1,5 +1,62 @@
-Photo Citations:
+Photo Citations - /cnn_images/dtc1.jpg to /cnn_images/dtc7.jpg:
 http://www.dot.ca.gov/dist11/trash/pics.html
 http://www.dot.ca.gov/dist11/trash/2015.html
 http://www.dot.ca.gov/dist11/trash/pics2014.html
+
+Photo Citations - /cnn_images/pixabay1.jpg to /cnn_images/pixabay10.jpg:
 https://pixabay.com/en/photos/garbage/
+
+Photo Citation - /cnn_images/trash1.jpg to /cnn_images/trash52.jpg:
+Google Earth Street View Images
+#1 = d11_sd_005_pm-3.10-nb.png
+#2 = d11_sd_005_pm-5.40-nb.png
+#3 = d4_ala_580_pm-47.3-eb.1.png
+#4 = d4_ala_880_pm-26.6-nb.1.png
+#5 = d4_ala_880_pm-26.6-nb.2.png
+#6 = d4_ala_880_pm-26.6-nb.3.png
+#7 = d4_ala_880_pm-27.7-nb.1.png
+#8 = d4_ala_880_pm-27.7-nb.2.png
+#9 = d4_ala_880_pm-27.7-nb.3.png
+#10 = d4_ala_880_pm-27.7-sb.1.png
+#11 = d4_ala_880_pm-28.7-sb.1.png
+#12 = d4_ala_880_pm-28.9-nb.1.png
+#13 = d4_ala_880_pm-28.9-sb.1.png
+#14 = d4_ala_880_pm-29.8-sb.1.png
+#15 = d4_ala_880_pm-29.8-sb.2.png
+#16 = d4_ala_880_pm-31.09-nb.1.png
+#17 = d4_ala_880_pm-31.09-nb.2.png
+#18 = d4_ala_880_pm-31.09-nb.3.png
+#19 = d4_ala_880_pm-31.09-nb.4.png
+#20 = d4_ala_880_pm-31.09-sb.1.png
+#21 = d4_ala_880_pm-31.09-sb.2.png
+#22 = d4_ala_880_pm-31.23-nb.1.png
+#23 = d4_ala_880_pm-31.23-nb.2.png
+#24 = d4_ala_880_pm-31.23-nb.3.png
+#25 = d4_ala_880_pm-31.23-nb.4.png
+#26 = d4_ala_880_pm-32.0-sb.1.png
+#27 = d4_cc_080_pm-0.22-eb.1.png
+#28 = d4_cc_080_pm-0.22-eb.2.png
+#29 = d4_cc_080_pm-0.22-eb.3.png
+#30 = d4_cc_080_pm-0.22-wb.1.png
+#31 = d4_cc_080_pm-0.50-eb.png
+#32 = d4_cc_080_pm-1.00-eb.1.png
+#33 = d4_cc_080_pm-1.00-eb.2.png
+#34 = d4_cc_080_pm-1.00-eb.3.png
+#35 = d4_cc_080_pm-1.00-eb.4.png
+#36 = d4_cc_080_pm-1.00-eb.5.png
+#37 = d4_cc_080_pm-1.67-eb.1.png
+#38 = d4_cc_080_pm-1.67-eb.2.png
+#39 = d4_cc_080_pm-1.67-eb.3.png
+#40 = d4_cc_080_pm-1.67-wb.1.png
+#41 = d4_cc_080_pm-1.67-wb.2.png
+#42 = d4_cc_080_pm-1.67-wb.3.png
+#43 = d4_cc_080_pm-2.00-eb.1.png
+#44 = d4_cc_080_pm-2.00-wb.1.png
+#45 = d4_cc_080_pm-2.62-eb.1.png
+#46 = d4_cc_080_pm-2.62-eb.2.png
+#47 = d4_cc_080_pm-2.92-wb.1.png
+#48 = d4_cc_080_pm-2.92-wb.2.png
+#49 = d4_cc_080_pm-2.92-wb.3.png
+#50 = d4_cc_080_pm-2.96-eb.1.png
+#51 = d4_cc_080_pm-3.41-eb.1.png
+#52 = d4_cc_080_pm-3.41-wb.1.png
