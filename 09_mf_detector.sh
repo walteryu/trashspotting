@@ -72,9 +72,9 @@ PATH_TO_UTILS = '/content/models/Custom-Object-Detection/object_detection/utils'
 !python object_detection/create_tf_record.py
 
 # Download and untar model
-# !wget http://storage.googleapis.com/download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_11_06_2017.tar.gz
-# !tar -xvf faster_rcnn_resnet101_coco_11_06_2017.tar.gz
-# !mv faster_rcnn_resnet101_coco_11_06_2017/model.ckpt.* .
+!wget http://storage.googleapis.com/download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_11_06_2017.tar.gz
+!tar -xvf faster_rcnn_resnet101_coco_11_06_2017.tar.gz
+!mv faster_rcnn_resnet101_coco_11_06_2017/model.ckpt.* .
 
 # Train model
 !python object_detection/train.py \
