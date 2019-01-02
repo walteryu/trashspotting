@@ -56,7 +56,7 @@ from object_detection.utils import ops as utils_ops
 #   raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
 # This is needed to display the images.
-%matplotlib inline
+# %matplotlib inline
 
 # Here are the imports from the object detection module.
 from object_detection.utils import label_map_util
