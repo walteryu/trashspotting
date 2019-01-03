@@ -23,7 +23,7 @@ os.environ['PYTHONPATH'] += ':/content/models/Custom-Object-Detection/:/content/
 !python object_detection/builders/model_builder_test.py
 
 # This is needed to display the images.
-%matplotlib inline
+# %matplotlib inline
 
 # Import modules (TF_ObjectDetection_API):
 import numpy as np
@@ -63,6 +63,7 @@ from object_detection.utils import visualization_utils as vis_util
 
 # Set paths
 PATH_TO_REPO = '/content/models/Custom-Object-Detection'
+PATH_TO_TRAIN = '/content/models/Custom-Object-Detection/train'
 PATH_TO_API = '/content/models/Custom-Object-Detection/object_detection'
 PATH_TO_UTILS = '/content/models/Custom-Object-Detection/object_detection/utils'
 
@@ -70,7 +71,7 @@ PATH_TO_UTILS = '/content/models/Custom-Object-Detection/object_detection/utils'
 %cd $PATH_TO_REPO
 !python object_detection/create_tf_record.py
 
-# Download and untar model
+# Download and untar model; do not download locally due to repo file size limits
 !wget http://storage.googleapis.com/download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_11_06_2017.tar.gz
 !tar -xvf faster_rcnn_resnet101_coco_11_06_2017.tar.gz
 !mv faster_rcnn_resnet101_coco_11_06_2017/model.ckpt.* .
