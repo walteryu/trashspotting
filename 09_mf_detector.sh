@@ -82,12 +82,43 @@ PATH_TO_UTILS = '/content/models/Custom-Object-Detection/object_detection/utils'
         --train_dir=train \
         --pipeline_config_path=faster_rcnn_resnet101.config
 
+# Download training files; separate module after running model
+!echo '===> cd $PATH_TO_TRAIN'
+%cd $PATH_TO_TRAIN
+!echo ''
+!echo '===> ls $PATH_TO_TRAIN'
+!ls -al $PATH_TO_TRAIN
+!echo ''
+
+# Relocate checkpoint files; do not run locally due to file size
+# >>>>> CHANGE STEPS HERE >>>>>
+!mv ./checkpoint ../
+!mv ./graph.pbtxt ../
+!mv ./model.ckpt-300.data-00000-of-00001 ../
+!mv ./model.ckpt-300.index ../
+!mv ./model.ckpt-300.meta ../
+
+!echo '===> cd $PATH_TO_REPO'
+%cd $PATH_TO_REPO
+!echo ''
+!echo '===> ls $PATH_TO_REPO'
+!ls -al $PATH_TO_REPO
+!echo ''
+
 # Export inference graph
-# !python object_detection/export_inference_graph.py \
-#         --input_type image_tensor \
-#         --pipeline_config_path faster_rcnn_resnet101.config \
-#         --trained_checkpoint_prefix model.ckpt-STEP_NUMBER \
-#         --output_directory output_inference_graph
+# >>>>> CHANGE STEPS HERE >>>>>
+!python object_detection/export_inference_graph.py \
+        --input_type image_tensor \
+        --pipeline_config_path faster_rcnn_resnet101.config \
+        --trained_checkpoint_prefix model.ckpt-300 \
+        --output_directory output_inference_graph
 
 # Test model!
-# python object_detection/object_detection_runner.py
+!python object_detection/object_detection_runner.py
+
+# Download test results
+from google.colab import files
+%cd $PATH_TO_REPO/output/test_images
+files.download('image-1.jpg')
+files.download('image-2.jpg')
+files.download('image-3.jpg')
