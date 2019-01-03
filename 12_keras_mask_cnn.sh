@@ -110,7 +110,9 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
                'keyboard', 'cell phone', 'microwave', 'oven', 'toaster',
                'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors',
                'teddy bear', 'hair drier', 'toothbrush', # end original classes
-               'plate', 'table', 'plastic', 'metal', 'paper', 'cardboard']
+               'plate', 'table', 'plastic', 'metal', 'paper', 'cardboard',
+               'book', 'textile-other', 'banner', 'pillow', 'blanket', 'curtain'
+               ]
 
 # Load a random image from the images folder
 # Photo: http://www.dot.ca.gov/dist11/trash/pics.html
