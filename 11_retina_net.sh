@@ -2,7 +2,7 @@
 # Reference: https://github.com/fizyr/keras-retinanet
 
 # show images inline
-%matplotlib inline
+# %matplotlib inline
 
 # automatically reload modules when they have changed
 %load_ext autoreload

@@ -73,6 +73,7 @@ config = InferenceConfig()
 config.display()
 
 # Troubleshoot kera conflict: https://github.com/matterport/Mask_RCNN/issues/694
+# May also cause re-compile issue:
 !pip install 'keras==2.1.6' --force-reinstall
 
 # Create model object in inference mode.
