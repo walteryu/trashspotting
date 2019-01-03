@@ -1,4 +1,4 @@
-# 06A - Chess Detection Algorithm (Colab Notebook Download)
+# 06A - Colab Notebook Download
 # Reference: https://github.com/wagonhelm/TF_ObjectDetection_API
 # Article: https://www.oreilly.com/ideas/object-detection-with-tensorflow
 
