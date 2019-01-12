@@ -110,7 +110,7 @@ PATH_TO_UTILS = '/content/models/Custom-Object-Detection/object_detection/utils'
 !python object_detection/export_inference_graph.py \
         --input_type image_tensor \
         --pipeline_config_path faster_rcnn_resnet101.config \
-        --trained_checkpoint_prefix model.ckpt-300 \
+        --trained_checkpoint_prefix model.ckpt-100 \
         --output_directory output_inference_graph
 
 # Test model!
