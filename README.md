@@ -36,7 +36,7 @@ Clone Github repository, then run locally or with Google Colaboratory. Local ins
 
 ### Initial Results
 
-Initial results are shared in this [Colaboratory Notebook](https://colab.research.google.com/drive/1E1HDwNLs1HAyCPifc1QDrM1x17lUEXb1); it is based on this [tutorial](https://www.dlology.com/blog/how-to-run-object-detection-and-segmentation-on-video-fast-for-free/) and analyzes publicly available photos and Google Street View imagery.
+Initial results are shared in this [Colaboratory Notebook](https://colab.research.google.com/drive/1E1HDwNLs1HAyCPifc1QDrM1x17lUEXb1); it is based on this [tutorial](https://www.dlology.com/blog/how-to-run-object-detection-and-segmentation-on-video-fast-for-free/) with Keras and the Mask R-CNN Algorithm to analyze publicly available photos and Google Street View imagery.
 
 ### Citations - Tutorials and Code Repositories (In Progress)
 
