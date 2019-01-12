@@ -116,9 +116,11 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
                'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote',
                'keyboard', 'cell phone', 'microwave', 'oven', 'toaster',
                'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors',
-               'teddy bear', 'hair drier', 'toothbrush', # end original classes
-               'plate', 'table', 'plastic', 'metal', 'paper', 'cardboard',
-               'book', 'textile-other', 'banner', 'pillow', 'blanket', 'curtain'
+               'teddy bear', 'hair drier', 'toothbrush',
+               # end original classes
+               'plate', 'table', 'plastic', 'metal', 'paper', 'cardboard', 'carpet',
+               'book', 'textile-other', 'banner', 'pillow', 'blanket', 'curtain',
+               'cloth', 'clothes', 'napkin', 'towel', 'mat', 'rug', 'furniture-other'
                ]
 
 # Load a random image from the images folder
