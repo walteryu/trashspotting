@@ -94,9 +94,9 @@ PATH_TO_UTILS = '/content/models/Custom-Object-Detection/object_detection/utils'
 # >>>>> CHANGE STEPS HERE >>>>>
 !mv ./checkpoint ../
 !mv ./graph.pbtxt ../
-!mv ./model.ckpt-300.data-00000-of-00001 ../
-!mv ./model.ckpt-300.index ../
-!mv ./model.ckpt-300.meta ../
+!mv ./model.ckpt-100.data-00000-of-00001 ../
+!mv ./model.ckpt-100.index ../
+!mv ./model.ckpt-100.meta ../
 
 !echo '===> cd $PATH_TO_REPO'
 %cd $PATH_TO_REPO
