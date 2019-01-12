@@ -16,7 +16,7 @@ Project implementation uses the technologies listed below and includes the neces
 4. [Docker - TensorFlow Image](https://hub.docker.com/r/tensorflow/tensorflow/)
 5. [Jupyter Notebook](https://jupyter.readthedocs.io/en/latest/install.html)
 
-Each module is intended to run in this [Colaboratory notebook](https://colab.research.google.com/drive/1gy4IcA6Kmasez6TXu1NM6fR3YWdKKr1f), so clone the notebook to you Google Drive account and paste desired module to run it.
+Each module is intended to run in this [Colaboratory notebook](https://colab.research.google.com/drive/1gy4IcA6Kmasez6TXu1NM6fR3YWdKKr1f), so clone the notebook to your Google Drive account and paste desired module to run it.
 
 Each major tutorial is organized into its own notebook module and cited accordingly; also included are annotated Google Street View images with CA highway litter for model training/testing.
 
@@ -34,6 +34,10 @@ TensorFlow requires a good amount of setup and configuration, so the tools liste
 
 Clone Github repository, then run locally or with Google Colaboratory. Local installation will require TensorFlow and all dependencies; as a result, Colaboratory or Docker image are highly recommended.
 
+### Initial Results
+
+Initial results are shared in this [Colaboratory Notebook](https://colab.research.google.com/drive/1E1HDwNLs1HAyCPifc1QDrM1x17lUEXb1); it is based on this [tutorial](https://www.dlology.com/blog/how-to-run-object-detection-and-segmentation-on-video-fast-for-free/) and analyzes publicly available photos and Google Street View imagery.
+
 ### Citations - Tutorials and Code Repositories (In Progress)
 
 Module 2: [Custom Model in Colab - Medium Article](https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9)\
@@ -47,8 +51,8 @@ Module 6: [Chess Object Detector - Github](https://github.com/wagonhelm/TF_Objec
 Module 7: [Chess Object Detector - Docker Script](https://www.oreilly.com/ideas/object-detection-with-tensorflow)\
 Module 8: [Raccoon Dataset - Medium Article](https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9)\
 Module 8: [Raccoon Dataset - Github](https://github.com/datitran/raccoon_dataset)\
-Module 9: [MF Detector - Medium Article](https://medium.freecodecamp.org/tracking-the-millenium-falcon-with-tensorflow-c8c86419225e)\
-Module 9: [MF Detector - Github](https://github.com/bourdakos1/Custom-Object-Detection)\
+Module 9: [Millennium Falcon Detector - Medium Article](https://medium.freecodecamp.org/tracking-the-millenium-falcon-with-tensorflow-c8c86419225e)\
+Module 9: [Millennium Falcon Detector - Github](https://github.com/bourdakos1/Custom-Object-Detection)\
 Module 10: [Image AI - Medium Article](https://towardsdatascience.com/object-detection-with-10-lines-of-code-d6cb4d86f606)\
 Module 10: [Image AI - Github](https://github.com/OlafenwaMoses/ImageAI/tree/master/imageai/Prediction)\
 Module 11: [RetinaNet with Keras - Github](https://github.com/fizyr/keras-retinanet)\
