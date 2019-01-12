@@ -87,14 +87,21 @@ model.load_weights(COCO_MODEL_PATH, by_name=True)
 # COCO Class names
 # Index of the class in the list is its ID. For example, to get ID of
 # the teddy bear class, use: class_names.index('teddy bear')
-# class_names = ['person', 'bicycle', 'car', 'motorcycle',
-#                'cup', 'chair', 'couch', 'bed', 'desk', 'table', 'bottle',
-#                'dining table', 'toilet', 'tv', 'laptop', 'cell phone', 'light',
-#                'table', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator',
+# Abbreviated classes but returns error when no class found:
+# class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle',
+#                'bus', 'train', 'truck', 'traffic light',
+#                'fire hydrant', 'stop sign', 'parking meter',
+#                'backpack', 'umbrella', 'handbag', 'suitcase',
+#                'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon',
+#                'plate', 'bowl', 'chair', 'couch', 'bed', 'dining table',
+#                'toilet', 'tv', 'laptop', 'microwave', 'oven', 'toaster',
+#                'sink', 'refrigerator',
+#                # end original classes
+#                'plate', 'table', 'plastic', 'metal', 'paper', 'cardboard', 'carpet',
 #                'book', 'textile-other', 'banner', 'pillow', 'blanket', 'curtain',
-#                'cloth', 'clothes', 'napkin', 'towel', 'mat', 'rug', 'furniture-other',
-#                'metal', 'plastic', 'paper', 'cardboard', 'carpet']
-# Original class
+#                'cloth', 'clothes', 'napkin', 'towel', 'mat', 'rug', 'furniture-other'
+#                ]
+# Original classes; no errors but returns false positives
 class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
                'bus', 'train', 'truck', 'boat', 'traffic light',
                'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird',
