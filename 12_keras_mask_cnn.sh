@@ -128,7 +128,7 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 # !wget http://www.dot.ca.gov/dist11/trash/2016/DSCN3217.jpg -P ./images
 # image = skimage.io.imread(os.path.join(IMAGE_DIR, 'DSCN3217.jpg'))
 
-for i in range(1,7):
+for i in range(2,7):
   file_names = next(os.walk(TRASH_DIR))[2]
   # image = skimage.io.imread(os.path.join(TRASH_DIR, random.choice(file_names)))
   image = skimage.io.imread(os.path.join(TRASH_DIR, 'dtc' + str(i) + '.jpg'))
