@@ -63,6 +63,8 @@ PATH_TO_UTILS = '/content/models/research/object_detection/utils'
 # PATH_TO_LABELS = '/content/models/research/object_detection/TF_ObjectDetection_API/labels'
 PATH_TO_REPO = '/content/models/research/object_detection/hedgehog_detector'
 PATH_TO_MODEL = '/content/models/research/object_detection/hedgehog_detector/models'
+PATH_TO_RE = '/content/models/research/object_detection/hedgehog_detector/models/research'
+PATH_TO_OBJECT = '/content/models/research/object_detection/hedgehog_detector/models/research/object_detection'
 PATH_TO_TRAIN = '/content/models/research/object_detection/hedgehog_detector/train_object_detector'
 
 # !echo 'git clone TF_ObjectDetection_API'
@@ -86,15 +88,24 @@ PATH_TO_TRAIN = '/content/models/research/object_detection/hedgehog_detector/tra
 # !echo ''
 
 !echo ''
-!echo '===> cd $PATH_TO_MODEL'
-%cd $PATH_TO_MODEL
+!echo '===> cd $PATH_TO_RE'
+%cd $PATH_TO_RE
 !echo ''
-!echo '===> ls $PATH_TO_MODEL'
-!ls -al $PATH_TO_MODEL
+!echo '===> ls $PATH_TO_RE'
+!ls -al $PATH_TO_RE
+!echo ''
+
+!echo ''
+!echo '===> cp config'
+!cp ./object_detection/samples/configs/ssd_mobilenet_v1_coco.config ./
+!ls -al $PATH_TO_OBJECT
 !echo ''
 
 # Train model
+%cd $PATH_TO_RE
 !python object_detection/train.py \
         --logtostderr \
-        --train_dir=train \
-        --pipeline_config_path=faster_rcnn_resnet101.config
+        --train_dir=train_object_detector/Labels/hedgehog \
+        --pipeline_config_path=SSD_mobilenet_v1_coco.config
+
+# --pipeline_config_path=models/research/object_detection/samples/configs/SSD_mobilenet_v1_coco.config
