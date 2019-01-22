@@ -16,7 +16,7 @@ Project implementation uses the technologies listed below and includes the neces
 4. [Docker - TensorFlow Image](https://hub.docker.com/r/tensorflow/tensorflow/)
 5. [Jupyter Notebook](https://jupyter.readthedocs.io/en/latest/install.html)
 
-Each module is intended to run in this [Colaboratory notebook](https://colab.research.google.com/drive/1gy4IcA6Kmasez6TXu1NM6fR3YWdKKr1f), so clone the notebook to your Google Drive account and paste desired module to run it.
+Each module is intended to run in this [Colaboratory Notebook](https://colab.research.google.com/drive/1gy4IcA6Kmasez6TXu1NM6fR3YWdKKr1f), so clone the notebook to your Google Drive account and paste desired module to run it.
 
 Each major tutorial is organized into its own notebook module and cited accordingly; also included are annotated Google Street View images with CA highway litter for model training/testing.
 
@@ -58,3 +58,7 @@ Module 10: [Image AI - Github](https://github.com/OlafenwaMoses/ImageAI/tree/mas
 Module 11: [RetinaNet with Keras - Github](https://github.com/fizyr/keras-retinanet)\
 Module 12: [Mask R-CNN with Keras - Article](https://www.dlology.com/blog/how-to-run-object-detection-and-segmentation-on-video-fast-for-free/)\
 Module 12: [Mask R-CNN with Keras - Github](https://github.com/Tony607/colab-mask-rcnn)
+Module 13: [Innovation Station Idea Entry](https://colab.research.google.com/drive/1tc0s2HxHW8po2tLZwgkgZA2mOkqI1xY5)
+Module 14: [Hedgehog Dataset - Medium Article](https://medium.com/@dana.yu/training-a-custom-object-detection-model-41093ddc5797)
+Module 14: [Hedgehog Dataset - Github](https://github.com/danamyu/hedgehog_detector)
+Module 15: [Google Object Detection Tutorial](https://colab.research.google.com/drive/1U5xBF2-a1rqfrUWs0ZoB10Ty8XqnHSW2)
