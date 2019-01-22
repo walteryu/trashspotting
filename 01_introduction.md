@@ -18,6 +18,10 @@ This project implements an image recognition model with object detection using T
 
 Image analysis was improved with the Object Detection API; specifically, annotated images were used to train a custom model. The trained model was used to evaluate test images.
 
+### Initial Results
+
+Results are shared in this [Colaboratory Notebook](https://colab.research.google.com/drive/1eIptxz6tX-b5ISX_bTRW9PlHvf7AQYID) and were developed using a Google TensorFlow template for object detection. It uses the R-CNN/Inception ResNet algorithm to analyze publicly available photos and Google Street View imagery with object detection.
+
 ### Installation
 
 Clone Github repository, then run locally or with Colaboratory. Local installation will require TensorFlow and all dependencies.
