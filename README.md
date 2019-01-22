@@ -57,8 +57,8 @@ Module 10: [Image AI - Medium Article](https://towardsdatascience.com/object-det
 Module 10: [Image AI - Github](https://github.com/OlafenwaMoses/ImageAI/tree/master/imageai/Prediction)\
 Module 11: [RetinaNet with Keras - Github](https://github.com/fizyr/keras-retinanet)\
 Module 12: [Mask R-CNN with Keras - Article](https://www.dlology.com/blog/how-to-run-object-detection-and-segmentation-on-video-fast-for-free/)\
-Module 12: [Mask R-CNN with Keras - Github](https://github.com/Tony607/colab-mask-rcnn)
-Module 13: [Innovation Station Idea Entry](https://colab.research.google.com/drive/1tc0s2HxHW8po2tLZwgkgZA2mOkqI1xY5)
-Module 14: [Hedgehog Dataset - Medium Article](https://medium.com/@dana.yu/training-a-custom-object-detection-model-41093ddc5797)
-Module 14: [Hedgehog Dataset - Github](https://github.com/danamyu/hedgehog_detector)
+Module 12: [Mask R-CNN with Keras - Github](https://github.com/Tony607/colab-mask-rcnn)\
+Module 13: [Innovation Station Idea Entry](https://colab.research.google.com/drive/1tc0s2HxHW8po2tLZwgkgZA2mOkqI1xY5)\
+Module 14: [Hedgehog Dataset - Medium Article](https://medium.com/@dana.yu/training-a-custom-object-detection-model-41093ddc5797)\
+Module 14: [Hedgehog Dataset - Github](https://github.com/danamyu/hedgehog_detector)\
 Module 15: [Google Object Detection Tutorial](https://colab.research.google.com/drive/1U5xBF2-a1rqfrUWs0ZoB10Ty8XqnHSW2)
