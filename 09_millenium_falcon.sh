@@ -115,10 +115,3 @@ PATH_TO_UTILS = '/content/models/Custom-Object-Detection/object_detection/utils'
 
 # Test model!
 !python object_detection/object_detection_runner.py
-
-# Download test results
-from google.colab import files
-%cd $PATH_TO_REPO/output/test_images
-files.download('image-1.jpg')
-files.download('image-2.jpg')
-files.download('image-3.jpg')
