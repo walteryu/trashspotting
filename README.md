@@ -59,6 +59,7 @@ Custom Vision is the preferred choice the following reasons:
 
 ### Citations - Tutorials and Code Repositories
 
+[Microsoft Custom Vision](https://www.customvision.ai) - Preferred Choice\
 Module 2: [Custom Model in Colab - Medium Article](https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9)\
 Module 2: [Custom Model in Colab - Github](https://hackernoon.com/object-detection-in-google-colab-with-custom-dataset-5a7bb2b0e97e)\
 Module 3: [Toy Detector - Medium Article](https://towardsdatascience.com/building-a-toy-detector-with-tensorflow-object-detection-api-63c0fdf2ac95)\
